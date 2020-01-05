@@ -1,20 +1,22 @@
 import React, { Fragment } from "react";
 import { Button, Row, Input } from "antd";
 
-import IssuesTable from "components/IssuesTable";
+import IssuesList from "components/IssuesList";
 
 const { Search } = Input;
 
-const IssuesTab: React.FC = () => (
+const OpenIssues: React.FC = () => (
   <Fragment>
     <Row type="flex" justify="space-between" style={{ marginBottom: "2rem" }}>
       <Search style={{ width: "60%" }} enterButton />
-      <Button type="primary">New Issue</Button>
+      <Button type="primary" href="/issues/new">
+        New Issue
+      </Button>
     </Row>
     <Row>
-      <IssuesTable />
+      <IssuesList />
     </Row>
   </Fragment>
 );
 
-export default IssuesTab;
+export default OpenIssues;

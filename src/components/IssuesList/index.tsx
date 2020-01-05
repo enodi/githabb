@@ -54,7 +54,7 @@ const header = (
   </Row>
 );
 
-const IssuesTable: React.FC = () => (
+const IssuesList: React.FC = () => (
   <List
     header={header}
     bordered
@@ -67,4 +67,4 @@ const IssuesTable: React.FC = () => (
   />
 );
 
-export default IssuesTable;
+export default IssuesList;
