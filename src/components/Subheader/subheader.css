@@ -1,0 +1,24 @@
+.subheader__content {
+  width: calc(100% - 300px);
+  margin: 0 auto;
+  font-size: 1.1rem;
+  padding: 1rem 0;
+}
+
+@media screen and (max-width: 850px) {
+  .subheader__content {
+    width: calc(100% - 50px);
+  }
+}
+
+@media screen and (min-width: 851px) and (max-width: 1200px) {
+  .subheader__content {
+    width: calc(100% - 150px);
+  }
+}
+
+.subheader__text-color {
+  color: #1890ff;
+  margin: 0.5rem 0.5rem 1.5rem;
+  display: inline-block;
+}
