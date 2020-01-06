@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Input, Button, Row, Form, notification, Icon } from "antd";
 import { connect } from "react-redux";
