@@ -1,24 +1,14 @@
 import React, { Fragment, useEffect } from "react";
-import { Button, List, Typography, Row, Icon, Dropdown, Menu } from "antd";
+import { Button, List, Typography, Row, Icon, Select } from "antd";
 import { connect } from "react-redux";
 
-import { startListIssues } from "actions/issues";
+import { startListIssues, startSortIssues } from "actions/issues";
 
-const menu = (
-  <Menu>
-    <Menu.Item key="0">
-      <a href="http://www.alipay.com/">1st menu item</a>
-    </Menu.Item>
-    <Menu.Item key="1">
-      <a href="http://www.taobao.com/">2nd menu item</a>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="3">3rd menu item</Menu.Item>
-  </Menu>
-);
+const { Option } = Select;
 
 interface Props {
   startListIssues: () => void;
+  startSortIssues: (data: any) => void;
   issues: any;
 }
 
@@ -26,6 +16,10 @@ const OpenIssues: React.FC<Props> = (props: Props) => {
   useEffect(() => {
     props.startListIssues();
   }, []);
+
+  const handleFilter = value => {
+    props.startSortIssues(value);
+  };
 
   const header = issues => {
     return (
@@ -45,11 +39,14 @@ const OpenIssues: React.FC<Props> = (props: Props) => {
           </span>
         </Row>
         <Row>
-          <Dropdown overlay={menu} trigger={["click"]}>
-            <a className="ant-dropdown-link" href="#!">
-              Sort <Icon type="down" />
-            </a>
-          </Dropdown>
+          <Select
+            defaultValue="Sort by"
+            style={{ width: 150 }}
+            onSelect={handleFilter}
+          >
+            <Option value="newest">Newest</Option>
+            <Option value="oldest">Oldest</Option>
+          </Select>
         </Row>
       </Row>
     );
@@ -82,7 +79,8 @@ const OpenIssues: React.FC<Props> = (props: Props) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  startListIssues: () => dispatch(startListIssues())
+  startListIssues: () => dispatch(startListIssues()),
+  startSortIssues: data => dispatch(startSortIssues(data))
 });
 
 const mapStateToProps = state => ({

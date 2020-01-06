@@ -6,6 +6,8 @@ export default (state = issuesDefaultState, action) => {
       return [...state, action.issue];
     case "LIST_ISSUES":
       return action.issues;
+    case "SORT_ISSUES":
+      return action.issues;
     default:
       return state;
   }

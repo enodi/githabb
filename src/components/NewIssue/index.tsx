@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Input, Button, Row, Form, notification, Icon } from "antd";
 import { connect } from "react-redux";
+import moment from "moment";
 
 import { startAddIssue } from "actions/issues";
 import { history } from "router/AppRoute";
@@ -23,7 +24,7 @@ const NewIssue: React.FC<Props> = (props: Props) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.startAddIssue({ title, text });
+    props.startAddIssue({ title, text, createdAt: moment().valueOf() });
     showNotification();
     history.push("/issues");
   };
