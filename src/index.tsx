@@ -26,7 +26,9 @@ ReactDOM.render(<Loader />, document.getElementById("root"));
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    store.dispatch(login(user.uid));
+    const { uid, displayName } = user;
+    const details = { uid, displayName };
+    store.dispatch(login(details));
     renderApp();
     if (history.location.pathname === "/") {
       history.push("/issues");

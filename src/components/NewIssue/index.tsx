@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import { Input, Button, Row, Form } from "antd";
+import { Input, Button, Row, Form, notification, Icon } from "antd";
 import { connect } from "react-redux";
 
 import { startAddIssue } from "actions/issues";
@@ -14,9 +14,17 @@ const NewIssue: React.FC<Props> = (props: Props) => {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
 
+  const showNotification = () => {
+    notification.open({
+      message: "New Issue Added Successfully",
+      icon: <Icon type="smile" style={{ color: "#108ee9" }} />
+    });
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
     props.startAddIssue({ title, text });
+    showNotification();
     history.push("/issues");
   };
 
@@ -34,7 +42,6 @@ const NewIssue: React.FC<Props> = (props: Props) => {
       </Form.Item>
       <Form.Item>
         <Editor
-          initialValue="Leave a comment"
           init={{
             height: 400,
             menubar: true,
