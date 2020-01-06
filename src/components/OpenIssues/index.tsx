@@ -15,6 +15,7 @@ interface Props {
 const OpenIssues: React.FC<Props> = (props: Props) => {
   useEffect(() => {
     props.startListIssues();
+    // eslint-disable-next-line
   }, []);
 
   const handleFilter = value => {
